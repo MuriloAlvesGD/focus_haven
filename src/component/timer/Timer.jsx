@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Grommet, Box} from "grommet";
+import { Grommet, Box, Meter } from "grommet";
 
-function Clock() {
+function Timer() {
     const workTime = localStorage.getItem("workTime");
     const sleepTime = localStorage.getItem("sleepTime");
     const cicles = localStorage.getItem("cicles");
@@ -12,7 +11,7 @@ function Clock() {
     const [state, setState] = useState("Idle");
     const [isActive, setActive] = useState(false);
     const [intervalId, setIntervalId] = useState(null);
-    const navigate = useNavigate();
+    const [completeWork, setCompleteWork] = useState(Array.from({ length: Number(cicles) }));
 
     const resetTime = () => {
         setSeg(0);
@@ -27,33 +26,30 @@ function Clock() {
 
     useEffect(() => {
         if (isActive) {
+            completeWork.fill(false);
             setLimit(workTime);
             setState("Working");
-        } else {
-            setState("Idle");
-        }
-    }, [isActive]);
-
-    useEffect(() => {
-        if (isActive) {
-            const Id = setInterval(() => setSeg((prev) => prev + 1), 1000);
+            const Id = setInterval(() => setSeg((prev) => prev + 1), 10);
 
             setIntervalId(Id);
         } else if (intervalId) {
+            setState("Idle");
             clearInterval(intervalId);
             setCicle(0);
         }
     }, [isActive]);
 
     useEffect(() => {
-        if (seg / 60 >= limit) {
-            if (cicle <= cicles) {
+        if (isActive && seg / 60 >= limit) {
+            if (cicle < cicles) {
                 resetTime();
                 setLimit(limit == workTime ? sleepTime : workTime);
                 setState(limit == workTime ? "Rest" : "Working");
+                if (limit == workTime) completeWork[cicle] = true;
                 setCicle((prev) => prev + 1);
             } else {
                 resetTime();
+                completeWork[cicle - 1] = true;
                 setActive(false);
                 clearInterval(intervalId);
             }
@@ -73,14 +69,29 @@ function Clock() {
     return (
         <Grommet theme={theme} full>
             <Box align="center" justify="center" gap="medium" pad="large">
-                <span>{state}</span>
+                <Meter
+                    values={[
+                        {
+                            value: (seg / Number(limit * 60)) * 100
+                        }
+                    ]}
+                    size="xsmall"
+                    thickness="medium"
+                    type="circle"
+                    aria-label="meter"
+                />
                 <span>{format(seg)}</span>
-                <span>Total - {limit == workTime ? "work" : "sleep"} time : {format(limit*60)}</span>
-                <button onClick={() => setActive((prev) => !prev)}>Start / Stop</button>
-                <button onClick={() => navigate("/config")}>config</button>
+                <button onClick={() => setActive(true)}>Start</button>
+                <button onClick={() => setActive(false)}>Stop</button>
+                <span>{"Status: " + state}</span>
+                <span>Work Time: {format(workTime * 60)}</span>
+                <span>Sleep Time: {format(sleepTime * 60)}</span>
+                {completeWork.map((status, index) => (
+                    <span key={index}>{status ? "Complete" : "Uncomplete"}</span>
+                ))}
             </Box>
         </Grommet>
     );
 }
 
-export default Clock;
+export default Timer;

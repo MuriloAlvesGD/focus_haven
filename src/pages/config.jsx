@@ -1,5 +1,6 @@
 import { useState } from "react";
-import SliderInput from "./component/sliderInput/SliderInput.jsx";
+import SliderInput from "../component/sliderInput/SliderInput.jsx";
+import ListInput from "../component/listInput/ListInput.jsx";
 import { useNavigate } from "react-router-dom";
 import { Grommet, Box } from "grommet";
 
@@ -36,6 +37,7 @@ function App() {
         <SliderInput func={setStopTime} max={10} />
         <button onClick={() => getBack()}>Return</button>
       </Box>
+        <ListInput/>
     </Grommet>
   );
 }
