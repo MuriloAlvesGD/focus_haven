@@ -1,12 +1,106 @@
-# React + Vite
+# Memo AI Helper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O projeto **MEMO I.A** é inspirado na ideia do famoso [TAMAGOCHI](https://pt.wikipedia.org/wiki/Tamagotchi). Em resumo, trata-se de um "pet virtual", mas com funcionalidades que vão além dessa definição.
 
-Currently, two official plugins are available:
+O MEMO não é apenas um pet virtual, mas também um companheiro de estudos operado por Inteligência Artificial, projetado para otimizar os horários de estudo e descanso, utilizando o Método Pomodoro. O objetivo do Memo é proporcionar um ambiente de maior produtividade, além de promover a desintoxicação digital.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Índice
 
-## Expanding the ESLint configuration
+- [História](#história)
+- [Características](#características)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Contribuição](#contribuição)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## História
+
+O Memo deriva de uma ideia que foi escrita há bastante tempo, chamada "MEU PALÁCIO MENTAL", que também seria uma ferramenta de estudos e teria o Memo como personagem principal, representando o subconsciente ou a própria MEMória. A ideia original era mais complexa e, possivelmente, ineficiente. Assim, buscou-se simplificá-la e melhorar sua usabilidade e aplicabilidade, resultando no projeto Memo I.A Helper.
+
+## Características
+
+- **Método Pomodoro**: A técnica foi implementada da seguinte forma:
+  1. Parâmetros configuráveis:
+     - Tempo de trabalho de até 60 minutos (1 hora);
+     - Realização de até 4 ciclos (Trabalho -> Descanso);
+     - Tempo de descanso de até 10 minutos.
+  2. O cronômetro pode ser pausado/interrompido a qualquer momento:
+     - Interrupções geram penalidades, que se manifestam na forma de diminuição do status do Memo;
+     - A penalidade é proporcional ao quão prematura for a desistência:
+       - Sem tempo de trabalho concluído: **maior redução de status**;
+       - Tempo de trabalho concluído: **redução proporcional ao percentual de conclusão**.
+  3. A conclusão do Pomodoro gera recompensas para o Memo (recompensas ainda em elaboração).
+
+- **PET Virtual - Memo**: Utilizado para humanizar a solução e gerenciar recompensas e punições:
+  - **STATUS** (precisa de revisão): Felicidade, Sono, Fome. Cada um diminui gradativamente e com mais intensidade de acordo com as ações:
+    - **Felicidade**:
+      - Aumenta com: **Ciclos Concluídos**;
+      - Reduz com: **Ciclos quebrados e/ou distrações**.
+    - **Sono**:
+      - Aumenta com: **Períodos de descanso pós-período de trabalho**;
+      - Reduz com: **Tempo de tela ou trabalho excessivo**.
+    - **Fome/Alimentação**:
+      - Aumenta com: **Tempo trabalhado**;
+      - Reduz com: **Tempo sem trabalho**.
+
+- **Bloqueio de Distrações**: O usuário poderá informar ao Memo quais sites são suas fontes de distração e que precisa de auxílio para ignorá-los.
+  - **Caso acesse algum site da lista**: O usuário será redirecionado automaticamente para uma página de aviso.
+
+- **Chat com IA**: O usuário poderá conversar com o Memo, sendo o chat criado utilizando técnicas para limitação de escopo e conteúdo.
+  - **Conteúdos inapropriados** para menores de 18 anos não serão permitidos, seguindo os padrões estabelecidos no Brasil.
+  - O chat será limitado a conversas que estimulem o estudo e a produtividade.
+    - *Quer perguntar sobre o novo namorado de fulano? Quem é o ator mais bonito?* **Aqui não vai rolar.**
+
+## Tecnologias Utilizadas
+
+- **Formato**: Extensão Google
+- **Linguagem de Programação**: JavaScript
+- **Frameworks**:
+  - React
+  - GrommetUI
+  - Phosphor
+- **Banco de Dados**: Armazenamento em Extension Storage (para a primeira versão)
+- **A DEFINIR**: I.A., Banco de Dados, Back-End
+
+## Compilação
+
+Siga os passos abaixo para instalar o projeto:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/muriloalvesgd/memo_ai_helper.git
+   ```
+
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd memo_ai_helper
+   ```
+
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+4. Compile a versão de produção:
+   ```bash
+   npm run build
+   ```
+
+## Instalação
+
+1. Abra o navegador e na barra de pesquisa acesse:
+   ```
+   chrome://extensions/
+   ```
+
+2. Ative o **modo de desenvolvedor** no canto superior direito.
+3. Clique em **Carregar sem compactação** e, na janela que abrir, navegue até o diretório do projeto e selecione a pasta **dist**.
+4. **Pronto!** A extensão será instalada e aparecerá em seu menu de extensões.
+
+## Atenção
+
+Este é um projeto ainda em desenvolvimento e contém diversos bugs e falhas.
+
+Achou algum erro? Mande um e-mail para: muriloalves.dev@gmail.com
+
+Sua contribuição será de grande ajuda para o desenvolvimento dessa solução!
