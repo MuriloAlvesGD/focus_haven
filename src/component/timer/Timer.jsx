@@ -29,7 +29,7 @@ function Timer() {
             completeWork.fill(false);
             setLimit(workTime);
             setState("Working");
-            const Id = setInterval(() => setSeg((prev) => prev + 1), 10);
+            const Id = setInterval(() => setSeg((prev) => prev + 1), 1000);
 
             setIntervalId(Id);
         } else if (intervalId) {

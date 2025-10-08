@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Grommet, Box } from "grommet";
 
 function App() {
-  const [durantion, setDuration] = useState(0);
-  const [stopTime, setStopTime] = useState(0);
-  const [cicles, setCicles] = useState(0);
+  const [durantion, setDuration] = useState(1);
+  const [stopTime, setStopTime] = useState(1);
+  const [cicles, setCicles] = useState(1);
   const navigate = useNavigate();
 
   const getBack = () => {
