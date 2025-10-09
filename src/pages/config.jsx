@@ -2,7 +2,8 @@ import { useState } from "react";
 import SliderInput from "../component/sliderInput/SliderInput.jsx";
 import ListInput from "../component/listInput/ListInput.jsx";
 import { useNavigate } from "react-router-dom";
-import { Grommet, Box } from "grommet";
+import { Grommet, Box, Button } from "grommet";
+import {customTheme} from "../styles.js";
 
 function App() {
   const [durantion, setDuration] = useState(1);
@@ -18,26 +19,16 @@ function App() {
     navigate("/");
   };
 
-  const theme = {
-    global: {
-      font: {
-        family: "Roboto",
-        size: "18px",
-        height: "20px"
-      }
-    }
-  };
-
   return (
-    <Grommet theme={theme} full>
+    <Grommet theme={customTheme} full>
       <Box align="center" justify="center">
         <h1>Pomodoro Config.:</h1>
         <SliderInput func={setDuration} max={60} />
         <SliderInput func={setCicles} max={4} type={"ciclo"} />
         <SliderInput func={setStopTime} max={10} />
-        <button onClick={() => getBack()}>Return</button>
+        <Button primary label="Return" onClick={() => getBack()}/>
       </Box>
-        <ListInput/>
+        <ListInput theme={customTheme}/>
     </Grommet>
   );
 }

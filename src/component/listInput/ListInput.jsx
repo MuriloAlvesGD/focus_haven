@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Grommet, Box, Form, FormField, TextInput, Button } from "grommet";
 
-function ListInput() {
+function ListInput({theme}) {
     const [urlBlocked, setUrlBlocked] = useState("");
     const [urlBlackList, setUrlBlackList] = useState([]);
 
@@ -34,7 +34,7 @@ useEffect(() => {
 
 
     return (
-        <Grommet>
+        <Grommet theme={theme}>
             <Form
                 onReset={() => setUrlBlocked("")}
                 onSubmit={({ value }) => handleUrl(value)}
@@ -47,12 +47,12 @@ useEffect(() => {
                         onChange={(event) => setUrlBlocked(event.target.value)}
                     />
                 </FormField>
-                <Box direction="row" gap="medium">
+                <Box {...theme.boxAlignRow}>
                     <Button type="submit" primary label="Submit" />
                     <Button type="reset" label="Reset" />
                 </Box>
             </Form>
-            <Box margin={{ top: 'medium' }}>
+            <Box {...theme.boxAlign}>
                 {urlBlackList.map((url, index) => (
                     <span key={index} onClick={() => handleDeleteUrl(index)}>{url}</span>
                 ))}

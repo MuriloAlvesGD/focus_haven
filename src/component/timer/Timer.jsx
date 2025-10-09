@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Grommet, Box, Meter } from "grommet";
+import { Box, Meter, Button, Clock} from "grommet";
+import {customTheme} from "../../styles.js";
 
 function Timer() {
     const workTime = localStorage.getItem("workTime");
@@ -56,41 +57,30 @@ function Timer() {
         }
     }, [seg]);
 
-    const theme = {
-        global: {
-            font: {
-                family: "Roboto",
-                size: "18px",
-                height: "20px"
-            }
-        }
-    };
-
     return (
-        <Grommet theme={theme} full>
-            <Box align="center" justify="center" gap="medium" pad="large">
-                <Meter
-                    values={[
-                        {
-                            value: (seg / Number(limit * 60)) * 100
-                        }
-                    ]}
-                    size="xsmall"
-                    thickness="medium"
-                    type="circle"
-                    aria-label="meter"
-                />
-                <span>{format(seg)}</span>
-                <button onClick={() => setActive(true)}>Start</button>
-                <button onClick={() => setActive(false)}>Stop</button>
-                <span>{"Status: " + state}</span>
-                <span>Work Time: {format(workTime * 60)}</span>
-                <span>Sleep Time: {format(sleepTime * 60)}</span>
-                {completeWork.map((status, index) => (
-                    <span key={index}>{status ? "Complete" : "Uncomplete"}</span>
-                ))}
-            </Box>
-        </Grommet>
+        <Box {...customTheme.boxAlign}>
+            <Meter
+                values={[
+                    {
+                        color: "control",
+                        value: (seg / Number(limit * 60)) * 100
+                    }
+                ]}
+                background={{ color: "control", opacity: "weak" }}
+                size="xsmall"
+                thickness="medium"
+                type="circle"
+                aria-label="meter"
+            />
+            {limit ? <Clock type="digital" time={isActive ? "T" + format((limit * 60) - seg) : "T00:00:00"}run={isActive ? "backward" : false}/> : <Clock type="digital" time="T00:00:00" run={false}/>}
+            <Button primary label={isActive ? "give up" : "start work"} onClick={() => setActive(!isActive)} />
+            <span>{"Status: " + state}</span>
+            <span>Work Time: {format(workTime * 60)}</span>
+            <span>Sleep Time: {format(sleepTime * 60)}</span>
+            {completeWork.map((status, index) => (
+                <span key={index}>{status ? "Complete" : "Uncomplete"}</span>
+            ))}
+        </Box>
     );
 }
 
