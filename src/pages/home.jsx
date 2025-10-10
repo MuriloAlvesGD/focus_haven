@@ -25,10 +25,10 @@ function Home() {
     }, [isActive]);
 
     return (
-            <Box {...customTheme.boxAlignRow}>
+            <Box {...customTheme.boxAlignRow} pad="0">
                 <Timer setActive={setActive} isActive={isActive} setState={setState} />
-                <Box {...customTheme.boxAlign}>
-                    <Card pad="small" width="small" background={{color: "text", opacity:"weak"}}>
+                <Box {...customTheme.boxAlign} pad="0" margin={{left: "10px"}}>
+                    <Card pad="small" width="xsmall" background={{color: "text", opacity:"weak"}}>
                         <CardBody {...customTheme.boxAlign}>
                             {state && handleIcon(state)}
                         </CardBody>

@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")).render(
     <MemoryRouter>
       <Grommet theme={customTheme} full>
         <Stack anchor="top-right">
-          <Box pad="xlarge">
+          <Box pad={{top:"100px"}}>
             <Router />
           </Box>
           <FloatingMenu />

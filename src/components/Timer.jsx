@@ -43,7 +43,7 @@ function Timer({setActive, isActive, setState}) {
     }, [seg]);
 
     return (
-        <Box {...customTheme.boxAlign}>
+        <Box {...customTheme.boxAlign} pad="0">
             <Meter
                 values={[
                     {

@@ -6,14 +6,6 @@ function FloatingMenu() {
     const navigate = useNavigate();
     let localURL = useLocation();
 
-    const handleIcon = () => {
-        if (localURL.pathname == "/config") {
-            return <KeyReturn size={32} weight="duotone" />;
-        } else {
-            return <Gear size={32} weight="duotone" />;
-        }
-    };
-
     //useEffect(() => {
     //    if (localURL.pathname == "/config") {
     //        destination = "/";
