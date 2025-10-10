@@ -1,14 +1,14 @@
 {
-  "name": "Pomodoro Timer",
-  "description": "A timer",
-  "version": "1.0",
+  "name": "Memo AI Helper",
+  "description": "A focus assistent",
+  "version": "0.1",
   "manifest_version": 3,
   "permissions": [
     "storage"
   ],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Pomodoro Timer"
+    "default_title": "Memo"
   },
    "content_scripts": [
     {

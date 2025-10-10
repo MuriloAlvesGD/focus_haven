@@ -1,16 +1,22 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
-import Config from "./pages/config.jsx";
-import Home from "./pages/home.jsx";
+import { MemoryRouter } from "react-router-dom";
+import { Grommet, Box, Stack } from "grommet";
+import { customTheme } from "./styles.js";
+import Router from "./router.jsx";
+import FloatingMenu from "./components/FloatingMenu.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <MemoryRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/config" element={<Config />} />
-      </Routes>
+      <Grommet theme={customTheme} full>
+        <Stack anchor="top-right">
+          <Box pad="xlarge">
+            <Router />
+          </Box>
+          <FloatingMenu />
+        </Stack>
+      </Grommet>
     </MemoryRouter>
   </StrictMode>
 );

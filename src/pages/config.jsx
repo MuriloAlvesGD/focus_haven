@@ -1,35 +1,25 @@
-import { useState } from "react";
-import SliderInput from "../component/sliderInput/SliderInput.jsx";
-import ListInput from "../component/listInput/ListInput.jsx";
-import { useNavigate } from "react-router-dom";
-import { Grommet, Box, Button } from "grommet";
-import {customTheme} from "../styles.js";
+import SliderInput from "../components/SliderInput.jsx";
+import { Box, Button, Text } from "grommet";
+import { customTheme } from "../styles.js";
 
 function App() {
-  const [durantion, setDuration] = useState(1);
-  const [stopTime, setStopTime] = useState(1);
-  const [cicles, setCicles] = useState(1);
-  const navigate = useNavigate();
-
-  const getBack = () => {
-    localStorage.setItem("workTime", durantion);
-    localStorage.setItem("sleepTime", stopTime);
-    localStorage.setItem("cicles", cicles);
-
-    navigate("/");
+  const save = (name, value) => {
+    localStorage.setItem(name, value);
   };
 
   return (
-    <Grommet theme={customTheme} full>
-      <Box align="center" justify="center">
-        <h1>Pomodoro Config.:</h1>
-        <SliderInput func={setDuration} max={60} />
-        <SliderInput func={setCicles} max={4} type={"ciclo"} />
-        <SliderInput func={setStopTime} max={10} />
-        <Button primary label="Return" onClick={() => getBack()}/>
+    <>
+      <Box align="center">
+        <Box align="start" width="fit-content">
+          <Text size="xlarge" weight="bold" margin={{ bottom: "20px" }}>
+            Pomodoro Config.:
+          </Text>
+          <SliderInput save={save} name="workTime" max={60} />
+          <SliderInput save={save} name="cicles" max={4} type={"ciclo"} />
+          <SliderInput save={save} name="sleepTime" max={10} />
+        </Box>
       </Box>
-        <ListInput theme={customTheme}/>
-    </Grommet>
+    </>
   );
 }
 

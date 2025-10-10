@@ -14,11 +14,6 @@ const textColors = {
 
 export const customTheme = deepMerge(grommet, {
     global: {
-        font: {
-            family: "Roboto",
-            size: "20px",
-            height: "20px"
-        },
         colors: {
             background: backColors,
             text: textColors,
