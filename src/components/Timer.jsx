@@ -3,10 +3,10 @@ import { Box, Meter, Button, Clock } from "grommet";
 import { customTheme } from "../styles.js";
 import { format } from "../globalFunctions.js";
 
-function Timer({setActive, isActive, setState}) {
-    const workTime = localStorage.getItem("workTime");
-    const sleepTime = localStorage.getItem("sleepTime");
-    const cicles = localStorage.getItem("cicles");
+function Timer({ setActive, isActive, setState, giveUp }) {
+    const [workTime, setWorkTime] = useState(0);
+    const [sleepTime, setSleepTime] = useState(0);
+    const [cicles, setCicles] = useState(0);
     const [limit, setLimit] = useState(0);
     const [cicle, setCicle] = useState(0);
     const [intervalId, setIntervalId] = useState(null);
@@ -25,7 +25,15 @@ function Timer({setActive, isActive, setState}) {
             clearInterval(intervalId);
             setCicle(0);
         }
+        localStorage.setItem("seg", seg);
+        localStorage.setItem("cicle", cicle);
     }, [isActive]);
+
+    //useEffect(() => {
+    //        localStorage.removeItem("seg");
+    //        localStorage.removeItem("cicle");
+    //        resetTime();
+    //}, [giveUp])
 
     useEffect(() => {
         if (isActive && seg / 60 >= limit) {
@@ -41,6 +49,14 @@ function Timer({setActive, isActive, setState}) {
             }
         }
     }, [seg]);
+
+    useEffect(() => {
+        setWorkTime(!localStorage.getItem("workTime") ? 1 : localStorage.getItem("workTime"));
+        setSleepTime(!localStorage.getItem("sleepTime") ? 1 : localStorage.getItem("sleepTime"));
+        setCicles(!localStorage.getItem("cicles") ? 1 : localStorage.getItem("cicles"));
+        setSeg(!localStorage.getItem("seg") ? 0 : localStorage.getItem("seg"));
+        setCicle(!localStorage.getItem("cicle") ? 0 : localStorage.getItem("cicle"));
+    }, []);
 
     return (
         <Box {...customTheme.boxAlign} pad="0">
