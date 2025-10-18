@@ -1,21 +1,18 @@
-# Memo AI Helper
+# Focus Haven
 
-O projeto **MEMO I.A** é inspirado na ideia do famoso [TAMAGOCHI](https://pt.wikipedia.org/wiki/Tamagotchi). Em resumo, trata-se de um "pet virtual", mas com funcionalidades que vão além dessa definição.
-
-O MEMO não é apenas um pet virtual, mas também um companheiro de estudos operado por Inteligência Artificial, projetado para otimizar os horários de estudo e descanso, utilizando o Método Pomodoro. O objetivo do Memo é proporcionar um ambiente de maior produtividade, além de promover a desintoxicação digital.
+O projeto **Focus Haven** é uma ferramento que buscar ser um refugio para todos aqueles que buscam melhorar seu foco, independente da atividade. O projeto inclui o **Memo** inspirado na ideia do famoso [TAMAGOCHI](https://pt.wikipedia.org/wiki/Tamagotchi). Em resumo, trata-se de um "pet virtual", mas com funcionalidades que vão além dessa definição.
 
 ## Índice
 
 - [História](#história)
 - [Características](#características)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Tecnologias Utilizadas](#Tecnologias-Utilizadas)
 - [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
+- [Contribuição](#Atenção)
 
 ## História
 
-O Memo deriva de uma ideia que foi escrita há bastante tempo, chamada "MEU PALÁCIO MENTAL", que também seria uma ferramenta de estudos e teria o Memo como personagem principal, representando o subconsciente ou a própria MEMória. A ideia original era mais complexa e, possivelmente, ineficiente. Assim, buscou-se simplificá-la e melhorar sua usabilidade e aplicabilidade, resultando no projeto Memo I.A Helper.
+O **Focus Haven** deriva de uma ideia que foi escrita há bastante tempo, chamada "MEU PALÁCIO MENTAL", que também seria uma ferramenta de estudos e teria o **Memo** como personagem principal, representando o subconsciente ou a própria MEMOria. A ideia original era mais complexa e, possivelmente, ineficiente. Assim, buscou-se simplificá-la e melhorar sua usabilidade e aplicabilidade, resultando no projeto **Focus Haven**.
 
 ## Características
 
@@ -28,7 +25,8 @@ O Memo deriva de uma ideia que foi escrita há bastante tempo, chamada "MEU PAL�
      - Interrupções geram penalidades, que se manifestam na forma de diminuição do status do Memo;
      - A penalidade é proporcional ao quão prematura for a desistência:
        - Sem tempo de trabalho concluído: **maior redução de status**;
-       - Tempo de trabalho concluído: **redução proporcional ao percentual de conclusão**.
+       - Tempo de trabalho concluído: **redução proporcional ao percentual de conclusão**;
+    - **Fechar/Trocar de Página não irá interromper o contador.**
   3. A conclusão do Pomodoro gera recompensas para o Memo (recompensas ainda em elaboração).
 
 - **PET Virtual - Memo**: Utilizado para humanizar a solução e gerenciar recompensas e punições:
@@ -43,22 +41,24 @@ O Memo deriva de uma ideia que foi escrita há bastante tempo, chamada "MEU PAL�
       - Aumenta com: **Tempo trabalhado**;
       - Reduz com: **Tempo sem trabalho**.
 
-- **Bloqueio de Distrações**: O usuário poderá informar ao Memo quais sites são suas fontes de distração e que precisa de auxílio para ignorá-los.
+- **Bloqueio de Distrações**: O usuário poderá informar quais sites são suas fontes de distração e que precisa de auxílio para ignorá-los.
   - **Caso acesse algum site da lista**: O usuário será redirecionado automaticamente para uma página de aviso.
 
-- **Chat com IA**: O usuário poderá conversar com o Memo, sendo o chat criado utilizando técnicas para limitação de escopo e conteúdo.
+#### Recursos de Planos Pagos
+1. **Chat com IA**: O chat estará disponível no plano **Foco Profundo** usuário poderá conversar com o Memo, sendo o chat criado utilizando técnicas para limitação de escopo e conteúdo.
   - **Conteúdos inapropriados** para menores de 18 anos não serão permitidos, seguindo os padrões estabelecidos no Brasil.
   - O chat será limitado a conversas que estimulem o estudo e a produtividade.
     - *Quer perguntar sobre o novo namorado de fulano? Quem é o ator mais bonito?* **Aqui não vai rolar.**
+- **Sincronização:** A sincronização será oferecida no plano **Foco Sincronizado** os dados serão salvos regularmente em nuvem e sincronizados com outros dispositivos.
 
-## Tecnologias Utilizadas
+## Tecnologias-Utilizadas
 
 - **Formato**: Extensão Google
-- **Linguagem de Programação**: JavaScript
+- **Linguagem de Programação**: JavaScript / JSX
 - **Frameworks**:
   - React
   - GrommetUI
-  - Phosphor
+  - Pixel Art Icons
 - **Banco de Dados**: Armazenamento em Extension Storage (para a primeira versão)
 - **A DEFINIR**: I.A., Banco de Dados, Back-End
 
