@@ -1,6 +1,9 @@
 import { Button, Box, DropButton } from "grommet";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Gear, Alarm, House, Wall } from "@phosphor-icons/react";
+import { Clock } from "pixelarticons/fonts/react/Clock.js";
+import { CloseBox } from "pixelarticons/fonts/react/CloseBox.js";
+import { Home } from "pixelarticons/fonts/react/Home.js";
+import { Menu } from "pixelarticons/fonts/react/Menu.js";
 
 function FloatingMenu() {
     const navigate = useNavigate();
@@ -17,24 +20,9 @@ function FloatingMenu() {
     const navBar = () => {
         return (
             <>
-                <Button
-                    margin="small"
-                    primary
-                    icon={<House size={32} weight="duotone" />}
-                    onClick={() => navigate("/")}
-                />
-                <Button
-                    margin="small"
-                    primary
-                    icon={<Alarm size={32} weight="duotone" />}
-                    onClick={() => navigate("/config")}
-                />
-                <Button
-                    margin="small"
-                    primary
-                    icon={<Wall size={32} weight="duotone" />}
-                    onClick={() => navigate("/black_list")}
-                />
+                <Button margin="small" primary icon={<Home height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/")} />
+                <Button margin="small" primary icon={<Clock height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/config")} />
+                <Button margin="small" primary icon={<CloseBox height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/black_list")} />
             </>
         );
     };
@@ -49,7 +37,7 @@ function FloatingMenu() {
                 background: "transparent",
                 elevation: "none"
             }}>
-            <Button margin="small" primary icon={<Gear size={32} weight="duotone" />} />
+            <Button margin="small" primary icon={<Menu height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} />
         </DropButton>
     );
 }

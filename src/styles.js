@@ -14,6 +14,9 @@ const textColors = {
 
 export const customTheme = deepMerge(grommet, {
     global: {
+        font: {
+            family: "Pixelify Sans, sans-serif"
+        },
         colors: {
             background: backColors,
             text: textColors,
