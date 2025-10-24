@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Meter, Button, Clock } from "grommet";
-import { customTheme } from "../styles.js";
+import { customTheme } from "../style/styles.js";
 import { format } from "../globalFunctions.js";
 
 function Timer({ setActive, isActive, setState, giveUp }) {
@@ -25,8 +25,8 @@ function Timer({ setActive, isActive, setState, giveUp }) {
             clearInterval(intervalId);
             setCicle(0);
         }
-        localStorage.setItem("seg", seg);
-        localStorage.setItem("cicle", cicle);
+        //localStorage.setItem("seg", seg);
+        //localStorage.setItem("cicle", cicle);
     }, [isActive]);
 
     //useEffect(() => {
@@ -54,8 +54,8 @@ function Timer({ setActive, isActive, setState, giveUp }) {
         setWorkTime(!localStorage.getItem("workTime") ? 1 : localStorage.getItem("workTime"));
         setSleepTime(!localStorage.getItem("sleepTime") ? 1 : localStorage.getItem("sleepTime"));
         setCicles(!localStorage.getItem("cicles") ? 1 : localStorage.getItem("cicles"));
-        setSeg(!localStorage.getItem("seg") ? 0 : localStorage.getItem("seg"));
-        setCicle(!localStorage.getItem("cicle") ? 0 : localStorage.getItem("cicle"));
+        //setSeg(!localStorage.getItem("seg") ? 0 : localStorage.getItem("seg"));
+        //setCicle(!localStorage.getItem("cicle") ? 0 : localStorage.getItem("cicle"));
     }, []);
 
     return (

@@ -2,10 +2,8 @@ import Timer from "../components/Timer.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Box, Text, Card, CardBody, CardFooter } from "grommet";
-import { customTheme } from "../styles.js";
-import { BatteryCharging } from "pixelarticons/fonts/react/BatteryCharging.js";
-import { BriefcaseSearch1 } from "pixelarticons/fonts/react/BriefcaseSearch1.js";
-import { Bed } from "pixelarticons/fonts/react/Bed.js";
+import { customTheme } from "../style/styles.js";
+import Icons from "../style/icons.jsx";
 
 function Home() {
     const navigate = useNavigate();
@@ -14,9 +12,9 @@ function Home() {
     const [giveUp, setGiveUp] = useState(false);
 
     const handleIcon = (status) => {
-        if (status == "Working") return <BriefcaseSearch1 height="50px" width="50px" viewBox="0 0 24 24" fill="gray" />;
-        if (status == "Rest") return <BatteryCharging height="50px" width="50px" viewBox="0 0 24 24" fill="gray" />;
-        if (status == "Idle") return <Bed height="50px" width="50px" viewBox="0 0 24 24" fill="gray" />;
+        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px"/>;
+        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px"/>;
+        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px"/>;
     };
 
     const handleGiveUp = () => {

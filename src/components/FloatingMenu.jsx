@@ -1,28 +1,18 @@
 import { Button, Box, DropButton } from "grommet";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Clock } from "pixelarticons/fonts/react/Clock.js";
-import { CloseBox } from "pixelarticons/fonts/react/CloseBox.js";
-import { Home } from "pixelarticons/fonts/react/Home.js";
-import { Menu } from "pixelarticons/fonts/react/Menu.js";
+import { useNavigate} from "react-router-dom";
+import { useState} from "react";
+import Icons from "../style/icons.jsx";
 
 function FloatingMenu() {
+    const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate();
-    let localURL = useLocation();
-
-    //useEffect(() => {
-    //    if (localURL.pathname == "/config") {
-    //        destination = "/";
-    //    } else {
-    //        destination = "/config";
-    //    }
-    //}, [localURL]);
 
     const navBar = () => {
         return (
             <>
-                <Button margin="small" primary icon={<Home height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/")} />
-                <Button margin="small" primary icon={<Clock height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/config")} />
-                <Button margin="small" primary icon={<CloseBox height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} onClick={() => navigate("/black_list")} />
+                <Button margin="small" primary icon={<Icons icon="home" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/")} />
+                <Button margin="small" primary icon={<Icons icon="clock" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/config")} />
+                <Button margin="small" primary icon={<Icons icon="listBox" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/black_list")} />
             </>
         );
     };
@@ -37,7 +27,7 @@ function FloatingMenu() {
                 background: "transparent",
                 elevation: "none"
             }}>
-            <Button margin="small" primary icon={<Menu height="50px" width="50px" viewBox="0 0 24 24" fill="white"/>} />
+            <Button margin="small" primary icon={<Icons icon={isOpen ? "eyeClosed" : "eye"} height="50px" width="50px" fill="white"/>} onClick={() => setOpen(!isOpen)}/>
         </DropButton>
     );
 }

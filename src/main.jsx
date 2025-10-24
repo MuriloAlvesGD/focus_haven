@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter } from "react-router-dom";
 import { Grommet, Box, Stack } from "grommet";
-import { customTheme } from "./styles.js";
+import { customTheme } from "./style/styles.js";
 import Router from "./router.jsx";
 import FloatingMenu from "./components/FloatingMenu.jsx";
 

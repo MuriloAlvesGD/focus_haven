@@ -1,6 +1,6 @@
 import SliderInput from "../components/SliderInput.jsx";
 import { Box, Button, Text } from "grommet";
-import { customTheme } from "../styles.js";
+import { customTheme } from "../style/styles.js";
 
 function App() {
   const save = (name, value) => {
