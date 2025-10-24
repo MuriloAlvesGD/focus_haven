@@ -68,12 +68,12 @@ Siga os passos abaixo para instalar o projeto:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/muriloalvesgd/memo_ai_helper.git
+   git clone https://github.com/muriloalvesgd/focus_haven.git
    ```
 
 2. Navegue até o diretório do projeto:
    ```bash
-   cd memo_ai_helper
+   cd focus_haven
    ```
 
 3. Instale as dependências:
