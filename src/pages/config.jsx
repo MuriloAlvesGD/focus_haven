@@ -8,7 +8,12 @@ function App() {
   };
 
   return (
-    <>
+    <Box
+      style={{
+        padding: "0",
+        height: "300px",
+        width: "300px"
+      }}>
       <Box align="center">
         <Box align="start" width="fit-content">
           <Text size="xlarge" weight="bold" margin={{ bottom: "20px" }}>
@@ -19,7 +24,7 @@ function App() {
           <SliderInput save={save} name="sleepTime" max={10} />
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

@@ -12,14 +12,12 @@ function Home() {
     const [giveUp, setGiveUp] = useState(false);
 
     const handleIcon = (status) => {
-        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px"/>;
-        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px"/>;
-        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px"/>;
+        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px" />;
+        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px" />;
+        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px" />;
     };
 
     const handleGiveUp = () => {
-
-
         setActive(!isActive);
     };
     useEffect(() => {
@@ -31,18 +29,50 @@ function Home() {
     }, [isActive]);
 
     return (
-        <Box {...customTheme.boxAlignRow} pad="0">
-            <Timer setActive={setActive} isActive={isActive} setState={setState} giveUp={giveUp}/>
-            <Box {...customTheme.boxAlign} pad="0" width="180px">
-                <Card pad="small" width="xsmall" background={{ color: "text", opacity: "weak" }}>
-                    <CardBody {...customTheme.boxAlign}>{state && handleIcon(state)}</CardBody>
+        <Box
+            {...customTheme.boxAlignRow}
+            style={{
+                padding: "0",
+                height: "300px",
+                width: "fit-content",
+                margin: "0 auto"
+            }}>
+            <Timer setActive={setActive} isActive={isActive} setState={setState} giveUp={giveUp} />
+            <Box {...customTheme.boxAlign} pad="0" width="fit-content" gap="15px">
+                <Card
+                    background={{ color: "text", opacity: "weak" }}
+                    style={{
+                        padding: "0", // Define o padding diretamente
+                        margin: "0",
+                        borderRadius: "12px"
+                    }}>
+                    <CardBody
+                        {...customTheme.boxAlign}
+                        style={{
+                            padding: "0", // Define o padding diretamente
+                            margin: "20px",
+                            borderRadius: "0"
+                        }}>
+                        {state && handleIcon(state)}
+                    </CardBody>
                     {/*
                         <CardFooter {...customTheme.boxAlign} background={{color: "control", opacity: "weak"}}>
                             <Text>Teste</Text>
                         </CardFooter>
                         */}
                 </Card>
-                <Button primary label={isActive ? "give up" : "start work"} onClick={() => handleGiveUp()} />
+                <Button
+                    primary
+                    style={{
+                        padding: "0 5px", // Define o padding diretamente
+                        margin: "0",
+                        borderRadius: "10px",
+                            fontSize: "12px",
+                                width: "100px"
+                    }}
+                    label={isActive ? "give up" : "start work"}
+                    onClick={() => handleGiveUp()}
+                />
             </Box>
 
             {/*

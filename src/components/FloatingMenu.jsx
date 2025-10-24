@@ -1,18 +1,36 @@
 import { Button, Box, DropButton } from "grommet";
-import { useNavigate} from "react-router-dom";
-import { useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Icons from "../style/icons.jsx";
 
 function FloatingMenu() {
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(false);
     const navigate = useNavigate();
+
+    const size = { height: "24px", width: "24px" };
+    const btns = [
+        { name: "home", link: "/" },
+        { name: "clock", link: "/config" },
+        { name: "listBox", link: "/black_list" }
+    ];
 
     const navBar = () => {
         return (
             <>
-                <Button margin="small" primary icon={<Icons icon="home" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/")} />
-                <Button margin="small" primary icon={<Icons icon="clock" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/config")} />
-                <Button margin="small" primary icon={<Icons icon="listBox" height="50px" width="50px" fill="white"/>} onClick={() => navigate("/black_list")} />
+                {btns.map((icon, index) => (
+                    <Button
+                        key={index}
+                        style={{
+                            padding: "8px", // Define o padding diretamente
+                            margin: "2px 12px",
+                            borderRadius: "5px"
+                        }}
+                        pad={{ vertical: "small", horizontal: "medium" }}
+                        primary
+                        icon={<Icons icon={icon.name} {...size} fill="white" />}
+                        onClick={() => navigate(icon.link)}
+                    />
+                ))}
             </>
         );
     };
@@ -27,7 +45,17 @@ function FloatingMenu() {
                 background: "transparent",
                 elevation: "none"
             }}>
-            <Button margin="small" primary icon={<Icons icon={isOpen ? "eyeClosed" : "eye"} height="50px" width="50px" fill="white"/>} onClick={() => setOpen(!isOpen)}/>
+            <Button
+                style={{
+                    padding: "8px", // Define o padding diretamente
+                    margin: "2px 12px",
+                    borderRadius: "5px"
+                }}
+                pad={{ vertical: "small", horizontal: "medium" }}
+                primary
+                icon={<Icons icon={!isOpen ? "eyeClosed" : "eye"} {...size} fill="white" />}
+                onClick={() => setOpen(!isOpen)}
+            />
         </DropButton>
     );
 }

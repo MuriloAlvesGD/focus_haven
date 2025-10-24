@@ -9,9 +9,9 @@ import FloatingMenu from "./components/FloatingMenu.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <MemoryRouter>
-      <Grommet theme={customTheme} full>
+      <Grommet theme={customTheme}>
         <Stack anchor="top-right">
-          <Box pad={{top:"100px"}}>
+          <Box pad={{top:"80px"}}>
             <Router />
           </Box>
           <FloatingMenu />
