@@ -27,7 +27,7 @@ function FloatingMenu() {
                         }}
                         pad={{ vertical: "small", horizontal: "medium" }}
                         primary
-                        icon={<Icons icon={icon.name} {...size} fill="white" />}
+                        icon={<Icons icon={icon.name} {...size} fill="#fffae3" />}
                         onClick={() => navigate(icon.link)}
                     />
                 ))}
@@ -53,7 +53,7 @@ function FloatingMenu() {
                 }}
                 pad={{ vertical: "small", horizontal: "medium" }}
                 primary
-                icon={<Icons icon={!isOpen ? "eyeClosed" : "eye"} {...size} fill="white" />}
+                icon={<Icons icon={!isOpen ? "eyeClosed" : "eye"} {...size} fill="#fffae3" />}
                 onClick={() => setOpen(!isOpen)}
             />
         </DropButton>

@@ -12,9 +12,9 @@ function Home() {
     const [giveUp, setGiveUp] = useState(false);
 
     const handleIcon = (status) => {
-        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px" />;
-        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px" />;
-        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px" />;
+        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px" fill="#0D1321"/>;
+        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px" fill="#0D1321"/>;
+        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px" fill="#0D1321"/>;
     };
 
     const handleGiveUp = () => {

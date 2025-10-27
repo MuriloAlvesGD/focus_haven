@@ -2,14 +2,21 @@
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet";
 
+const colors = {
+    rich_black: "#0D1321",
+    linen: "#FFEDDF",
+    rose_taupe: "#7D6167",
+    mindaro: "#C5D86D"
+};
+
 const backColors = {
-    dark: "#282e36",
-    light: "#fffae3"
+    dark: colors.rich_black,
+    light: colors.linen
 };
 
 const textColors = {
-    dark: "#fffae3",
-    light: "#282e36"
+    dark: colors.linen,
+    light: colors.rich_black
 };
 
 export const customTheme = deepMerge(grommet, {
