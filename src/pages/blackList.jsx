@@ -19,6 +19,20 @@ function BlackList() {
         }
     };
 
+    const getLocation = () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            const activeTab = tabs[0]; // Pega a aba ativa
+            if (activeTab) {
+                const temp = [...urlBlackList, activeTab.url];
+                setUrlBlackList(temp);
+
+                chrome.storage.local.set({ urlBlackList: temp }, () => {
+                    console.log("URL adicionada à lista de bloqueio:", temp);
+                });
+            }
+        });
+    };
+
     const handleDeleteUrl = (index) => {
         const temp = urlBlackList.filter((_, i) => i !== index);
         setUrlBlackList(temp);
@@ -67,7 +81,6 @@ function BlackList() {
                         borderRadius: "0"
                     }}>
                     <Button type="submit" primary label="Submit" />
-                    <Button type="reset" label="Reset" />
                 </Box>
             </Form>
             <Box
@@ -85,7 +98,7 @@ function BlackList() {
                         style={{
                             padding: "0"
                         }}>
-                        <Text key={index}>{url}</Text>
+                        <Text key={index}>{url.length > 20 ? url.slice(0, 21) : url}</Text>
                         <Button
                             style={{
                                 padding: "0", // Define o padding diretamente
@@ -97,6 +110,7 @@ function BlackList() {
                         />
                     </Box>
                 ))}
+                <Text onClick={() => getLocation()}>add url</Text>
             </Box>
         </Box>
     );
