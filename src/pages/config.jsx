@@ -4,7 +4,15 @@ import { customTheme } from "../style/styles.js";
 
 function App() {
   const save = (name, value) => {
-    localStorage.setItem(name, value);
+    let saveData = {};
+    saveData[name] = value;
+    chrome.storage.local.set(saveData, () => {
+        if (chrome.runtime.lastError) {
+            console.error("Erro ao salvar dados:", chrome.runtime.lastError);
+        } else {
+            console.log(`Dados salvos com sucesso: ${name} = ${value}`);
+        }
+    });
   };
 
   return (

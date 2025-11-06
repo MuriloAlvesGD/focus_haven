@@ -4,8 +4,6 @@ function Icons({ icon, ...props }) {
     // Verificando se o ícone existe
     const Icon = paths[icon];
 
-    console.log(`teste: ${Icon}`);
-
     if (!Icon) {
         console.warn(`Ícone "${icon}" não encontrado.`);
         return null; // Retorna null se o ícone não for encontrado

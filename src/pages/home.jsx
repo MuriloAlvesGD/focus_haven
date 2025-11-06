@@ -9,15 +9,15 @@ function Home() {
     const navigate = useNavigate();
     const [state, setState] = useState("Idle");
     const [isActive, setActive] = useState(false);
-    const [giveUp, setGiveUp] = useState(false);
 
     const handleIcon = (status) => {
-        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px" fill="#0D1321"/>;
-        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px" fill="#0D1321"/>;
-        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px" fill="#0D1321"/>;
+        if (status == "Working") return <Icons icon="suitcase" height="50px" width="50px" fill="#0D1321" />;
+        if (status == "Rest") return <Icons icon="tea" height="50px" width="50px" fill="#0D1321" />;
+        if (status == "Idle") return <Icons icon="bed" height="50px" width="50px" fill="#0D1321" />;
     };
 
-    const handleGiveUp = () => {
+    const handleClick = () => {
+        chrome.runtime.sendMessage({ action: !isActive ? "start" : "stop" });
         setActive(!isActive);
     };
     useEffect(() => {
@@ -37,7 +37,7 @@ function Home() {
                 width: "fit-content",
                 margin: "0 auto"
             }}>
-            <Timer setActive={setActive} isActive={isActive} setState={setState} giveUp={giveUp} />
+            <Timer setActive={setActive} isActive={isActive} setState={setState}/>
             <Box {...customTheme.boxAlign} pad="0" width="fit-content" gap="15px">
                 <Card
                     background={{ color: "text", opacity: "weak" }}
@@ -67,18 +67,13 @@ function Home() {
                         padding: "0 5px", // Define o padding diretamente
                         margin: "0",
                         borderRadius: "10px",
-                            fontSize: "12px",
-                                width: "100px"
+                        fontSize: "12px",
+                        width: "100px"
                     }}
                     label={isActive ? "give up" : "start work"}
-                    onClick={() => handleGiveUp()}
+                    onClick={() => handleClick()}
                 />
             </Box>
-
-            {/*
-                <span>Work Time: {format(workTime * 60)}</span>
-                <span>Sleep Time: {format(sleepTime * 60)}</span>
-                */}
         </Box>
     );
 }
