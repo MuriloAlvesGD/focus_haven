@@ -8,6 +8,12 @@
     "alarms",
     "tabs"
   ],
+   "icons": {
+    "16": "black_120.png",
+    "32": "black_120.png",
+    "48": "black_120.png",
+    "128": "black_120.png"
+  },
   "action": {
     "default_popup": "index.html",
     "default_title": "Focus Haven"
