@@ -10,8 +10,9 @@ function Icons({ icon, ...props }) {
     }
 
     return (
-        <svg viewBox="0 0 24 24" {...props}><path d={Icon} fillRule="evenodd" /></svg>
-
+            <svg viewBox="0 0 24 24" {...props}>
+                <path d={Icon} fillRule="evenodd" />
+            </svg>
     );
 }
 

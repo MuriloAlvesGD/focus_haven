@@ -51,7 +51,7 @@ const startClock = () => {
                     //Check every 1 second/tick
                     if (cicleCount < cicles) {
                         segs = 0;
-                        limit == workTime ? sleepTime : workTime;
+                        limit = limit == workTime ? sleepTime : workTime;
                         cicleCount++;
                     } else {
                         cicleCount = 0;
