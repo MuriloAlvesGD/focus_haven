@@ -15,7 +15,7 @@ function Home(colors) {
     };
 
     const handleClick = () => {
-        //chrome.runtime.sendMessage({ action: !isActive ? "start" : "stop" });
+        chrome.runtime.sendMessage({ action: !isActive ? "start" : "stop" });
         setActive(!isActive);
     };
     useEffect(() => {

@@ -84,8 +84,18 @@ export const theme = deepMerge(grommet, {
             margin: "0"
         }
     },
-    textInput: {
+    list: {
         container: {
+            width: "90%"
+        },
+        item: {
+            extend: () => ``
+        }
+    },
+    pagination: {
+        container: {
+            margin: "0 auto"
         }
     }
+
 });

@@ -10,44 +10,40 @@ function BlackList(colors) {
     const handleUrl = (value) => {
         setUrlBlocked("");
         if (value.url.trim() != "") {
-            const temp = [...urlBlackList, value.url];
-            setUrlBlackList(temp);
-
-            //chrome.storage.local.set({ urlBlackList: temp }, () => {
-            //    console.log("URL adicionada à lista de bloqueio:", temp);
-            //});
+            if (!urlBlackList.some((e) => e == value.url.trim())) {
+                const temp = [...urlBlackList, value.url];
+                setUrlBlackList(temp);
+                chrome.storage.local.set({ urlBlackList: temp }, () => {
+                    console.log("URL adicionada à lista de bloqueio:", temp);
+                });
+            }
         }
     };
 
     const getLocation = () => {
-        //chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        //    const activeTab = tabs[0]; // Pega a aba ativa
-        //    if (activeTab) {
-        //        const temp = [...urlBlackList, activeTab.url];
-        //        setUrlBlackList(temp);
-        //
-        //        chrome.storage.local.set({ urlBlackList: temp }, () => {
-        //            console.log("URL adicionada à lista de bloqueio:", temp);
-        //        });
-        //    }
-        //});
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            const activeTab = tabs[0]; // Pega a aba ativa
+            if (activeTab) {
+                handleUrl(activeTab);
+            }
+        });
     };
 
     const handleDeleteUrl = (index) => {
         const temp = urlBlackList.filter((_, i) => i !== index);
         setUrlBlackList(temp);
 
-        //chrome.storage.local.set({ urlBlackList: temp }, () => {
-        //    console.log("URL removida da lista de bloqueio:", temp);
-        //});
+        chrome.storage.local.set({ urlBlackList: temp }, () => {
+            console.log("URL removida da lista de bloqueio:", temp);
+        });
     };
 
     useEffect(() => {
-        //chrome.storage.local.get(["urlBlackList"], (result) => {
-        //    if (result.urlBlackList) {
-        //        setUrlBlackList(result.urlBlackList);
-        //    }
-        //});
+        chrome.storage.local.get(["urlBlackList"], (result) => {
+            if (result.urlBlackList) {
+                setUrlBlackList(result.urlBlackList);
+            }
+        });
     }, []);
 
     return (
@@ -72,7 +68,7 @@ function BlackList(colors) {
                     }}
                     width="90%"
                     align="end"
-                    gap="5px">
+                    gap="10px">
                     <FormField name="url" htmlFor="textinput-id" margin="0">
                         <TextInput
                             id="textinput-id"
@@ -91,24 +87,47 @@ function BlackList(colors) {
                     <Button
                         type="submit"
                         default
-                        icon={<Icons icon="addBox" height="24px" width="24px" fill={colors.contrast} />}
+                        icon={
+                            <Box {...theme.boxAlign} pad="2px" gap="0" background={colors.contrast} round="5px">
+                                <Icons icon="addBox" height="24px" width="24px" fill={colors.back_shadown} />
+                                <Text color={colors.back_shadown} size="10px" gap="0">
+                                    add
+                                </Text>
+                            </Box>
+                        }
                         size="xsmall"
                         pad="0"
                     />
-                    <Text onClick={() => getLocation()}>add url</Text>
+                    <Button
+                        onClick={() => getLocation()}
+                        default
+                        icon={
+                            <Box {...theme.boxAlign} pad="2px" gap="0" background={colors.contrast} round="5px">
+                                <Icons icon="tab" height="24px" width="24px" fill={colors.back_shadown} />
+                                <Text color={colors.back_shadown} size="10px" gap="0">
+                                    tab
+                                </Text>
+                            </Box>
+                        }
+                        size="xsmall"
+                        pad="0"
+                    />
                 </Box>
             </Form>
             <List
                 background={colors.back_shadown}
-                data={urlBlackList.map((url) => (url.length > 20 ? url.slice(0, 21) : url))}
-                onMore={handleDeleteUrl}
-                pad="4px 10px"
+                data={urlBlackList.map((url, index) => ({
+                    url: url.length > 20 ? url.slice(0, 21) : url,
+                    key: index
+                }))}
+                pad="2px 5px"
+                width="1000px"
                 action={(item, index) => (
                     <Icons
                         icon="removeBox"
                         width="20px"
                         height="20px"
-                        fill="black"
+                        fill={colors.contrast}
                         onClick={() => handleDeleteUrl(index)}
                     />
                 )}

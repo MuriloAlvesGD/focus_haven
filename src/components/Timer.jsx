@@ -9,17 +9,17 @@ function Timer({ setActive, isActive, setState, colors }) {
     const [seg, setSeg] = useState(0);
 
     const getState = () => {
-        //chrome.storage.local.get(["seg", "limit", "active", "working"], (res) => {
-        //    if (chrome.runtime.lastError) {
-        //        console.error("Erro ao recuperar os dados:", chrome.runtime.lastError);
-        //        setActive(false);
-        //    }
-        //
-        //    setLimit(res.limit);
-        //    setSeg(res.seg);
-        //    if (res.working) setState(res.working);
-        //    setActive(res.active);
-        //});
+        chrome.storage.local.get(["seg", "limit", "active", "working"], (res) => {
+            if (chrome.runtime.lastError) {
+                console.error("Erro ao recuperar os dados:", chrome.runtime.lastError);
+                setActive(false);
+            }
+
+            setLimit(res.limit);
+            setSeg(res.seg);
+            if (res.working) setState(res.working);
+            setActive(res.active);
+        });
     };
 
     useEffect(() => {
@@ -29,9 +29,9 @@ function Timer({ setActive, isActive, setState, colors }) {
         }
     }, [isActive]);
 
-    //useEffect(() => {
-    //    //getState();
-    //}, []);
+    useEffect(() => {
+        getState();
+    }, []);
 
     return (
         <Box {...theme.boxAlign} pad="0" gap="5px">
